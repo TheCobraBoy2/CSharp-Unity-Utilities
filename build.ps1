@@ -2,7 +2,7 @@ $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptPath
 
 $pack = Get-Content "./package.json" -Raw | ConvertFrom-Json
-$packVer = $pack.version + 1
+$packVer = $pack.version
 
 if (Test-Path "build") {
     Remove-Item "build" -Recurse -Force
