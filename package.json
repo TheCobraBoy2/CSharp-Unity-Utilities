@@ -47,10 +47,9 @@
     "changelog": "auto-changelog -p --ignore-commit-pattern '^docs: auto-update$'",
     "update-readme": "node update-readme.js",
     "commit-generated": "git add CHANGELOG.md README.md && git commit -m 'docs: auto-update' || echo 'No changes to commit'",
-    "version-patch": "npm version patch",
-    "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated && npm run version-patch",
+    "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated",
     "package": "vsce package --out build",
-    "release": "git push origin --follow-tags && npx auto-changelog --unreleased-only --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
+    "release": "npm version patch && git push origin --follow-tags && npx auto-changelog --unreleased-only --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
     "build": "npm run clean && npm run compile && npm run prebuild && npm run package && npm run release"
   },
   "devDependencies": {
