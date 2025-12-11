@@ -12,4 +12,4 @@ It automatically:
 - Adds `Start()` and `Update()` methods
 
 
-Current Version: {{VERSION}}
+Current Version: 0.0.2

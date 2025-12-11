@@ -9,7 +9,7 @@
   "scripts": {
     "changelog": "auto-changelog -p",
     "update-readme": "node update-readme.js",
-    "prebuild": "npm version patch && npm run changelog && npm run update-readme",
+    "prebuild": "npm run changelog && npm run update-readme && git add . && git commit -m \"chore: update changelog and README\" && npm version patch",
     "build": "npm run prebuild && mkdir -p build && vsce package --out build"
   },
   "categories": [
