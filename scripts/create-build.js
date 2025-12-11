@@ -1,11 +1,15 @@
-import * as fs from "fs";
-import * as path from "path";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const buildPath = path.join(__dirname, "..", "build");
 
 if (!fs.existsSync(buildPath)) {
-    fs.mkdirSync(buildPath);
-    console.log("Build folder created.");
+    fs.mkdirSync(buildPath, { recursive: true });
+    console.log("Build folder created:", buildPath);
 } else {
-    console.log("Build folder already exists.");
+    console.log("Build folder already exists:", buildPath);
 }
