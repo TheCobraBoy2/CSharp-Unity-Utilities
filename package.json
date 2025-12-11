@@ -35,8 +35,10 @@
       "properties": {
         "csharpUnityUtilities.template": {
           "type": "string",
-          "default": "// ------------------------------------------\n// Script: {{CLASSNAME}}\n// Namespace: {{NAMESPACE}}\n// Version: {{VERSION}}\n// Created: {{DATE}}\n// ------------------------------------------\n\nusing UnityEngine;\n\nnamespace {{NAMESPACE}}\n{\n    public class {{CLASSNAME}} : MonoBehaviour\n    {\n        void Start() { }\n        void Update() { }\n    }\n}",
-          "description": "Template for new MonoBehaviour scripts. Use {{NAMESPACE}} and {{CLASSNAME}} as placeholders."
+          "default": "// -----------------------------------------\n// Script: {{CLASSNAME}}\n// Namespace: {{NAMESPACE}}\n// C# Unity Utils Version: {{VERSION}}\n// Created: {{DATE}}\n// -----------------------------------------\nusing UnityEngine;\nnamespace {{NAMESPACE}} {\n    public class {{CLASSNAME}} : MonoBehaviour\n    {\n        void Start() { }\n        void Update() { }\n    }\n}",
+          "description": "Template for generating new MonoBehaviour scripts.\nUse the placeholders {{CLASSNAME}}, {{NAMESPACE}}, {{VERSION}}, {{DATE}}.",
+          "scope": "resource",
+          "markdownDescription": true
         }
       }
     }

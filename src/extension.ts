@@ -36,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
 
             if (!template) {
                 template = `// Auto-generated MonoBehaviour
-// Version: {{VERSION}}, Created: {{DATE}}
+// C# Unity Utilities Version: {{VERSION}}, Created: {{DATE}}
 using UnityEngine;
 
 namespace {{NAMESPACE}}
