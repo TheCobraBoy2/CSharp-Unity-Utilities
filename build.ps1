@@ -1,7 +1,7 @@
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptPath
 
-$pack = Get-Content "../package.json" -Raw | ConvertFrom-Json
+$pack = Get-Content "./package.json" -Raw | ConvertFrom-Json
 $packVer = $pack.version
 
 if (Test-Path "build") {
@@ -21,7 +21,7 @@ git commit -m "docs: auto-update" | Out-Null
 
 Write-Host "Incrementing version..." -ForegroundColor Cyan
 npm version patch
-$version = (Get-Content ..\package.json | ConvertFrom-Json).version
+$version = (Get-Content .\package.json | ConvertFrom-Json).version
 
 Write-Host "Packaging extension..." -ForegroundColor Cyan
 vsce package --out build

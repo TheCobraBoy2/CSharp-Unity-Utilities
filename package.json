@@ -131,7 +131,7 @@
     }
   },
   "scripts": {
-    "build": "pwsh ./scripts/build.ps1"
+    "build": "pwsh ./build.ps1"
   },
   "license": "MIT",
   "author": "Landon Snellgrove (vorrikz)",
