@@ -42,14 +42,14 @@
     }
   },
   "scripts": {
-    "changelog": "auto-changelog -p --ignore-commit-pattern \"^docs: auto-update$\"",
+    "changelog": "auto-changelog -p --unreleased --ignore-commit-pattern \"^docs: auto-update$\"",
     "update-readme": "node update-readme.js",
     "commit-generated": "git add CHANGELOG.md README.md && git commit -m \"docs: auto-update\"",
     "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated && npm version patch",
     "compile": "tsc",
     "create-build": "node ./scripts/create-build.js",
-    "add-release": "git push origin --follow-tags && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file CHANGELOG.md",
-    "build": "npm run compile && npm run prebuild && npm run create-build && vsce package --out build && git add . && git commit -m \"Commit Build\" && npm run add-release"
+    "add-release": "git push origin --follow-tags && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes \"$(auto-changelog --unreleased --stdout --ignore-commit-pattern '^docs: auto-update$')\"",
+    "build": "npm run compile && npm run prebuild && npm run create-build && vsce package --out build && npm run add-release"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
