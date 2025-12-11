@@ -49,8 +49,8 @@
     "commit-generated": "git add CHANGELOG.md README.md && git commit -m 'docs: auto-update' || echo 'No changes to commit'",
     "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated",
     "package": "vsce package --out build",
-    "release": "npm version patch && git push origin --follow-tags && npx auto-changelog --unreleased-only --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
-    "build": "npm run clean && npm run compile && npm run prebuild && npm run package && npm run release"
+    "release": "npm run prebuild && npm version patch && git push origin main --follow-tags && npx auto-changelog --unreleased-only --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
+    "build": "npm run clean && npm run compile && npm run release"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
