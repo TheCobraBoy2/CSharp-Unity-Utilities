@@ -32,8 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
 
             const namespaceName = folderPathToNamespace(folderPath);
 
-            let templateArray = vscode.workspace.getConfiguration("csharpUnityUtilities").get<string[]>("template");
-            let template = templateArray?.join("\n");
+            let template = vscode.workspace.getConfiguration("csharpUnityUtilities").get<string>("template");
 
             if (!template) {
                 template = `// Auto-generated MonoBehaviour
