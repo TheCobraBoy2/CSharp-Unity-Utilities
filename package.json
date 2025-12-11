@@ -48,7 +48,8 @@
     "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated && npm version patch",
     "compile": "tsc",
     "create-build": "node ./scripts/create-build.js",
-    "build": "npm run compile && npm run prebuild && npm run create-build && vsce package --out build && git add . && git commit -m \"Commit Build\""
+    "add-release": "gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file CHANGELOG.md",
+    "build": "npm run compile && npm run prebuild && npm run create-build && vsce package --out build && git add . && git commit -m \"Commit Build\" && add-release"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
