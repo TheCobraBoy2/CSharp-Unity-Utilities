@@ -1,3 +1,5 @@
+Version: 1.0.49
+
 # Unity Utilities for VS Code
 
 A lightweight, VS Code extension that adds helpful tools for Unity and C# workflows.  
