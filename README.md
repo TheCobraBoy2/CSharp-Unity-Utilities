@@ -12,4 +12,4 @@ It automatically:
 - Adds `Start()` and `Update()` methods
 
 
-Current Version: 1.0.41
+Current Version: 1.0.42
