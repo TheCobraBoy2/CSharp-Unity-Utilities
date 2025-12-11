@@ -1,0 +1,62 @@
+{
+  "name": "csharp-unity-utilities",
+  "displayName": "C# Unity Utilities",
+  "publisher": "vorrikz",
+  "version": "1.0.22",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheCobraBoy2/CSharp-Unity-Utilities"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "unityUtilities.newMonoBehaviour",
+        "title": "New C# MonoBehaviour Script"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "unityUtilities.newMonoBehaviour",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "C# Unity Utilities",
+      "properties": {
+        "csharpUnityUtilities.template": {
+          "type": "string",
+          "default": "// ------------------------------------------\n// Script: {{CLASSNAME}}\n// Namespace: {{NAMESPACE}}\n// Version: {{VERSION}}\n// Created: {{DATE}}\n// ------------------------------------------\n\nusing UnityEngine;\n\nnamespace {{NAMESPACE}}\n{\n    public class {{CLASSNAME}} : MonoBehaviour\n    {\n        void Start() { }\n        void Update() { }\n    }\n}",
+          "description": "Template for new MonoBehaviour scripts. Use {{NAMESPACE}} and {{CLASSNAME}} as placeholders."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "node ./scripts/clean-build.js",
+    "compile": "tsc",
+    "changelog": "auto-changelog -p --ignore-commit-pattern '^docs: auto-update$'",
+    "update-readme": "node update-readme.js",
+    "commit-generated": "git add CHANGELOG.md README.md && git commit -m 'docs: auto-update' || echo 'No changes to commit'",
+    "version-patch": "npm version patch",
+    "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated && npm run version-patch",
+    "package": "vsce package --out build",
+    "release": "git push origin --follow-tags && npx auto-changelog --from-version $(git describe --tags --abbrev=0) --to-version v$(node -p \"require('./package.json').version\") --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
+    "build": "npm run clean && npm run compile && npm run prebuild && npm run package && npm run release"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "@types/node": "^20.6.2",
+    "@types/vscode": "^1.80.0",
+    "auto-changelog": "^2.2.0"
+  }
+}
