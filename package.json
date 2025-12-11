@@ -43,15 +43,15 @@
   },
   "scripts": {
     "clean": "node ./scripts/clean-build.js",
-    "changelog": "auto-changelog -p --ignore-commit-pattern '^docs: auto-update$'",
-    "unreleased-changelog": "auto-changelog --unreleased --stdout --ignore-commit-pattern '^docs: auto-update$'",
+    "changelog": "bun x auto-changelog -p --ignore-commit-pattern '^docs: auto-update$'",
+    "unreleased-changelog": "bun x auto-changelog --unreleased --stdout --ignore-commit-pattern '^docs: auto-update$'",
     "update-readme": "node update-readme.js",
     "commit-generated": "git add CHANGELOG.md README.md && git commit -m 'docs: auto-update' || echo 'No changes to commit'",
-    "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated",
+    "prebuild": "bun run changelog && bun run update-readme && bun run commit-generated",
     "compile": "tsc",
     "package": "vsce package --out build",
-    "release": "npm run prebuild && npm run compile && npm run package && npm version patch && git push origin main --follow-tags && npx auto-changelog --unreleased-only --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
-    "build": "npm run clean && npm run release"
+    "release": "bun run prebuild && bun run compile && bun run package && npm version patch && git push origin main --follow-tags && bun x auto-changelog --unreleased-only --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
+    "build": "bun run clean && bun run release"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
