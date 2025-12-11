@@ -1,15 +1,71 @@
-# C# Unity Utilities
+# Unity Utilities for VS Code
 
-A simple local-use VS Code extension that adds:
+A lightweight, VS Code extension that adds helpful tools for Unity and C# workflows.  
+Created by: Landon Snellgrove
 
-✔ Right-click → **New C# MonoBehaviour Script**
+---
 
-It automatically:
+### ✨ Script Creation
 
-- Inserts the namespace based on folder structure
-- Creates the class
-- Inherits from `MonoBehaviour`
-- Adds `Start()` and `Update()` methods
+#### Simple Right-Click Menu  
+Simply right click to open the menu to create these scripts.
 
+**Right-click menu screenshot:**  
+![Right Click Menu](./assets/ss1.png)
 
-Current Version: 1.0.48
+- **MonoBehaviour Script** — Class with `Start()` and `Update()` plus UnityEngine imports  
+- **Class** — Standard C# class  
+- **Enum** — Enumeration template  
+- **Interface** — Interface template  
+- **Struct** — Struct with UnityEngine reference  
+
+---
+
+## 🚀 Features
+
+This extension automatically:
+
+- Creates scripts inside the folder you clicked  
+- Generates namespaces based on directory structure  
+- Adds a small header (script name, namespace, extension version, date)  
+- Opens the newly created file immediately  
+- Remains simple, clean, and easy to expand  
+
+---
+
+## 📸 Example Workflow
+
+#### 1. You choose a script type  
+![Right Click Menu](./assets/ss1.png)
+
+#### 2. You’re prompted to name the script  
+![Script Naming Prompt](./assets/ss2.png)
+
+#### 3. The generated script opens automatically  
+![Generated Script](./assets/ss3.png)
+
+---
+
+## 📦 Future Additions
+
+The extension is designed to be expandable. Additional utilities may include:
+
+- ScriptableObject templates  
+- EditorWindow / Custom Inspector templates  
+- Unity event script generators  
+- Common patterns (Singleton, Manager, Service Locator, etc.)  
+- Other Unity or project-specific file tools  
+
+---
+
+## 📝 Why This Exists
+
+Unity developers often repeat the same script creation tasks.  
+This extension streamlines that workflow with:
+
+- A **simple** right-click menu  
+- Clean script templates  
+- No unnecessary clutter  
+- Easy customization for your project or team  
+
+---
