@@ -15,17 +15,61 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "submenus": [
+      {
+        "id": "newCSharpScriptSubmenu",
+        "label": "New C# Script"
+      }
+    ],
     "commands": [
       {
         "command": "unityUtilities.newMonoBehaviour",
-        "title": "New C# MonoBehaviour Script"
+        "title": "MonoBehaviour"
+      },
+      {
+        "command": "unityUtilities.newClass",
+        "title": "Class"
+      },
+      {
+        "command": "unityUtilities.newEnum",
+        "title": "Enum"
+      },
+      {
+        "command": "unityUtilities.newInterface",
+        "title": "Interface"
+      },
+      {
+        "command": "unityUtilities.newStruct",
+        "title": "Struct"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "unityUtilities.newMonoBehaviour",
+          "submenu": "newCSharpScriptSubmenu",
           "group": "navigation"
+        }
+      ],
+      "newCSharpScriptSubmenu": [
+        {
+          "command": "unityUtilities.newMonoBehaviour",
+          "group": "1_types"
+        },
+        {
+          "command": "unityUtilities.newClass",
+          "group": "1_types"
+        },
+        {
+          "command": "unityUtilities.newEnum",
+          "group": "1_types"
+        },
+        {
+          "command": "unityUtilities.newInterface",
+          "group": "1_types"
+        },
+        {
+          "command": "unityUtilities.newStruct",
+          "group": "1_types"
         }
       ]
     },
@@ -33,13 +77,53 @@
       "type": "object",
       "title": "C# Unity Utilities",
       "properties": {
-        "csharpUnityUtilities.template": {
+        "csharpUnityUtilities.monoBehaviourTemplate": {
           "title": "C# Unity Utilities",
           "displayName": "MonoBehaviour Script Template",
           "type": "string",
-          "default": "// ----------------------------------------- \n// Script: testingsomestuff \n// Namespace: Assets.Scripts \n// C# Unity Utils Version: 1.0.45 \n// Created: 12/10/2025 \n// ------------------------------------------  \n\nusing UnityEngine;  \n\nnamespace Assets.Scripts {\n     public class testingsomestuff : MonoBehaviour\n     {\n\n       void Start() { }\n\n      void Update() { }\n     }\n}",
+          "default": "// ----------------------------------------- \n// Script: {{CLASSNAME}} \n// Namespace: {{NAMESPACE}} \n// C# Unity Utils Version: {{VERSION}} \n// Created: {{DATE}} \n// ------------------------------------------\n\nusing UnityEngine;\n\nnamespace {{NAMESPACE}} {\n     public class {{CLASSNAME}} : MonoBehaviour\n     {\n       void Start() { }\n\n       void Update() { }\n     }\n}",
           "description": "Template for new MonoBehaviour scripts. Use {{CLASS_NAME}}, {{NAMESPACE}}, {{VERSION}}, and {{DATE}} as placeholders.",
           "markdownDescription": "Template for new MonoBehaviour scripts. Use `{{CLASS_NAME}}`, `{{NAMESPACE}}`, `{{VERSION}}`, and `{{DATE}}` as placeholders.",
+          "scope": "resource",
+          "editPresentation": "multilineText"
+        },
+        "csharpUnityUtilities.classTemplate": {
+          "title": "C# Unity Utilities",
+          "displayName": "Class Script Template",
+          "type": "string",
+          "default": "// ----------------------------------------- \n// Script: {{CLASSNAME}} \n// Namespace: {{NAMESPACE}} \n// C# Unity Utils Version: {{VERSION}} \n// Created: {{DATE}} \n// ------------------------------------------\n\n\nnamespace {{NAMESPACE}} {\n     public class {{CLASSNAME}}\n     {\n\n}\n}",
+          "description": "Template for new Class scripts. Use {{CLASS_NAME}}, {{NAMESPACE}}, {{VERSION}}, and {{DATE}} as placeholders.",
+          "markdownDescription": "Template for new Class scripts. Use `{{CLASS_NAME}}`, `{{NAMESPACE}}`, `{{VERSION}}`, and `{{DATE}}` as placeholders.",
+          "scope": "resource",
+          "editPresentation": "multilineText"
+        },
+        "csharpUnityUtilities.enumTemplate": {
+          "title": "C# Unity Utilities",
+          "displayName": "Enum Script Template",
+          "type": "string",
+          "default": "// ----------------------------------------- \n// Script: {{CLASSNAME}} \n// Namespace: {{NAMESPACE}} \n// C# Unity Utils Version: {{VERSION}} \n// Created: {{DATE}} \n// ------------------------------------------\n\n\nnamespace {{NAMESPACE}} {\n     public enum {{CLASSNAME}}\n     {\n\n}\n}",
+          "description": "Template for new Enum scripts. Use {{CLASS_NAME}}, {{NAMESPACE}}, {{VERSION}}, and {{DATE}} as placeholders.",
+          "markdownDescription": "Template for new Enum scripts. Use `{{CLASS_NAME}}`, `{{NAMESPACE}}`, `{{VERSION}}`, and `{{DATE}}` as placeholders.",
+          "scope": "resource",
+          "editPresentation": "multilineText"
+        },
+        "csharpUnityUtilities.interfaceTemplate": {
+          "title": "C# Unity Utilities",
+          "displayName": "Interface Script Template",
+          "type": "string",
+          "default": "// ----------------------------------------- \n// Script: {{CLASSNAME}} \n// Namespace: {{NAMESPACE}} \n// C# Unity Utils Version: {{VERSION}} \n// Created: {{DATE}} \n// ------------------------------------------\n\n\nnamespace {{NAMESPACE}} {\n     public interface {{CLASSNAME}}\n     {\n\n}\n}",
+          "description": "Template for new Interface scripts. Use {{CLASS_NAME}}, {{NAMESPACE}}, {{VERSION}}, and {{DATE}} as placeholders.",
+          "markdownDescription": "Template for new Interface scripts. Use `{{CLASS_NAME}}`, `{{NAMESPACE}}`, `{{VERSION}}`, and `{{DATE}}` as placeholders.",
+          "scope": "resource",
+          "editPresentation": "multilineText"
+        },
+        "csharpUnityUtilities.structTemplate": {
+          "title": "C# Unity Utilities",
+          "displayName": "Struct Script Template",
+          "type": "string",
+          "default": "// ----------------------------------------- \n// Script: {{CLASSNAME}} \n// Namespace: {{NAMESPACE}} \n// C# Unity Utils Version: {{VERSION}} \n// Created: {{DATE}} \n// ------------------------------------------\n\n\nnamespace {{NAMESPACE}} {\n     public struct {{CLASSNAME}}\n     {\n\n}\n}",
+          "description": "Template for new Struct scripts. Use {{CLASS_NAME}}, {{NAMESPACE}}, {{VERSION}}, and {{DATE}} as placeholders.",
+          "markdownDescription": "Template for new Struct scripts. Use `{{CLASS_NAME}}`, `{{NAMESPACE}}`, `{{VERSION}}`, and `{{DATE}}` as placeholders.",
           "scope": "resource",
           "editPresentation": "multilineText"
         }
@@ -47,8 +131,11 @@
     }
   },
   "scripts": {
-    "build": "pwsh ./build.ps1"
+    "build": "pwsh ./build.ps1",
+    "vscode:prepublish": "npm run build"
   },
+  "license": "MIT",
+  "author": "Landon Snellgrove (vorrikz)",
   "devDependencies": {
     "typescript": "^5.2.2",
     "@types/node": "^20.6.2",
