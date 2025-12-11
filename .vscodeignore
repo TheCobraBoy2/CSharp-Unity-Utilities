@@ -1,0 +1,7 @@
+build.ps1
+changelog.md
+tsconfig.json
+update-readme.js
+node_modules/**
+scripts/
+src/
