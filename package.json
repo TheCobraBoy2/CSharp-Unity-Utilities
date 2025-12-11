@@ -2,7 +2,7 @@
   "name": "csharp-unity-utilities",
   "displayName": "C# Unity Utilities",
   "publisher": "vorrikz",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "engines": {
     "vscode": "^1.80.0"
   },
