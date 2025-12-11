@@ -50,7 +50,7 @@
     "version-patch": "npm version patch",
     "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated && npm run version-patch",
     "package": "vsce package --out build",
-    "release": "git push origin --follow-tags && npx auto-changelog --from-version $(git describe --tags --abbrev=0) --to-version v$(node -p \"require('./package.json').version\") --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
+    "release": "git push origin --follow-tags && npx auto-changelog --unreleased --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && rm temp_release_notes.txt",
     "build": "npm run clean && npm run compile && npm run prebuild && npm run package && npm run release"
   },
   "devDependencies": {
