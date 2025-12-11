@@ -34,30 +34,14 @@
       "title": "C# Unity Utilities",
       "properties": {
         "csharpUnityUtilities.template": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "default": [
-            "// -----------------------------------------",
-            "// Script: {{CLASSNAME}}",
-            "// Namespace: {{NAMESPACE}}",
-            "// C# Unity Utils Version: {{VERSION}}",
-            "// Created: {{DATE}}",
-            "// -----------------------------------------",
-            "",
-            "using UnityEngine;",
-            "",
-            "namespace {{NAMESPACE}} {",
-            "    public class {{CLASSNAME}} : MonoBehaviour",
-            "    {",
-            "        void Start() { }",
-            "        ",
-            "        void Update() { }",
-            "    }",
-            "}"
-          ],
-          "description": "Template for generating new MonoBehaviour scripts."
+          "title": "C# Unity Utilities",
+          "displayName": "MonoBehaviour Script Template",
+          "type": "string",
+          "default": "// ----------------------------------------- \n// Script: testingsomestuff \n// Namespace: Assets.Scripts \n// C# Unity Utils Version: 1.0.45 \n// Created: 12/10/2025 \n// ------------------------------------------  \n\nusing UnityEngine;  \n\nnamespace Assets.Scripts {\n     public class testingsomestuff : MonoBehaviour\n     {\n\n       void Start() { }\n\n      void Update() { }\n     }\n}",
+          "description": "Template for new MonoBehaviour scripts. Use {{CLASS_NAME}}, {{NAMESPACE}}, {{VERSION}}, and {{DATE}} as placeholders.",
+          "markdownDescription": "Template for new MonoBehaviour scripts. Use `{{CLASS_NAME}}`, `{{NAMESPACE}}`, `{{VERSION}}`, and `{{DATE}}` as placeholders.",
+          "scope": "resource",
+          "editPresentation": "multilineText"
         }
       }
     }
