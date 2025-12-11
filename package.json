@@ -49,7 +49,7 @@
     "commit-generated": "git add CHANGELOG.md README.md && git commit -m \"docs: auto-update\" || echo 'No changes to commit'",
     "prebuild": "npm run changelog && npm run update-readme && npm run commit-generated && npm version patch",
     "compile": "tsc",
-    "add-release": "git push origin --follow-tags && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes \"$(npm run -s unreleased-changelog)\"",
+    "add-release": "git push origin --follow-tags && npx auto-changelog --unreleased --stdout --ignore-commit-pattern '^docs: auto-update$' > temp_release_notes.txt && gh release create v$(node -p \"require('./package.json').version\") build/*.vsix --title v$(node -p \"require('./package.json').version\") --notes-file temp_release_notes.txt && del temp_release_notes.txt",
     "build": "npm run clean-build && npm run compile && npm run prebuild && vsce package --out build && npm run add-release"
   },
   "devDependencies": {
