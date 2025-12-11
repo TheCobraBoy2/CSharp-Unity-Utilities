@@ -44,7 +44,6 @@
   "scripts": {
     "clean": "node ./scripts/clean-build.js",
     "changelog": "bun x auto-changelog -p --ignore-commit-pattern '^docs: auto-update$'",
-    "unreleased-changelog": "bun x auto-changelog --unreleased --stdout --ignore-commit-pattern '^docs: auto-update$'",
     "update-readme": "node update-readme.js",
     "commit-generated": "git add CHANGELOG.md README.md && git commit -m 'docs: auto-update' || echo 'No changes to commit'",
     "prebuild": "bun run changelog && bun run update-readme && bun run commit-generated",
