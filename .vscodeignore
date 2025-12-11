@@ -5,4 +5,5 @@ update-readme.js
 node_modules/**
 scripts/
 src/
-extension/changelog.md
+extension/assets/**
+extension/assets/
