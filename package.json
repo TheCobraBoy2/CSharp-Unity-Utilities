@@ -1,0 +1,46 @@
+{
+  "name": "csharp-unity-utilities",
+  "displayName": "C# Unity Utilities",
+  "publisher": "vorrikz",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "scripts": {
+    "changelog": "auto-changelog -p",
+    "prebuild": "npm version patch && npm run changelog",
+    "update-readme": "node update-readme.js",
+    "build": "npm run prebuild && mkdir -p build && vsce package --out build"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "C# Unity Utilities",
+      "properties": {
+        "csharpUnityUtilities.template": {
+          "type": "string",
+          "default": "// Auto-generated MonoBehaviour\nusing UnityEngine;\n\nnamespace {{NAMESPACE}}\n{\n    public class {{CLASSNAME}} : MonoBehaviour\n    {\n        private void Start() {}\n        private void Update() {}\n    }\n}",
+          "description": "Template for new MonoBehaviour scripts. Use {{NAMESPACE}} and {{CLASSNAME}} as placeholders."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "unityUtilities.newMonoBehaviour",
+        "title": "New C# MonoBehaviour Script"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "unityUtilities.newMonoBehaviour",
+          "group": "navigation"
+        }
+      ]
+    }
+  }
+}
