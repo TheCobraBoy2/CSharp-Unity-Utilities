@@ -4,8 +4,6 @@ Set-Location $scriptPath
 $pack = Get-Content "./package.json" -Raw | ConvertFrom-Json
 $packVer = $pack.version
 
-#test comment
-
 if (Test-Path "build") {
     Remove-Item "build" -Recurse -Force
 }
@@ -16,9 +14,6 @@ tsc
 
 Write-Host "Generating changelog..." -ForegroundColor Cyan
 npx auto-changelog -p --ignore-commit-pattern '^docs: auto-update$'
-
-Write-Host "Updating README..." -ForegroundColor Cyan
-node update-readme.js
 
 Write-Host "Performing git operations..." -ForegroundColor Cyan
 git add CHANGELOG.md README.md
