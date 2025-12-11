@@ -4,6 +4,8 @@ Set-Location $scriptPath
 $pack = Get-Content "./package.json" -Raw | ConvertFrom-Json
 $packVer = $pack.version
 
+#test comment
+
 if (Test-Path "build") {
     Remove-Item "build" -Recurse -Force
 }
