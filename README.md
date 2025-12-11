@@ -13,7 +13,7 @@ Created by: Landon Snellgrove
 Simply right click to open the menu to create these scripts.
 
 **Right-click menu screenshot:**  
-![Right Click Menu](./assets/ss1.png)
+![Right Click Menu](https://raw.githubusercontent.com/TheCobraBoy2/CSharp-Unity-Utilities/main/assets/ss1.png)
 
 - **MonoBehaviour Script** — Class with `Start()` and `Update()` plus UnityEngine imports  
 - **Class** — Standard C# class  
@@ -38,13 +38,13 @@ This extension automatically:
 ## 📸 Example Workflow
 
 #### 1. You choose a script type  
-![Right Click Menu](./assets/ss1.png)
+![Right Click Menu](https://raw.githubusercontent.com/TheCobraBoy2/CSharp-Unity-Utilities/main/assets/ss1.png)
 
 #### 2. You’re prompted to name the script  
-![Script Naming Prompt](./assets/ss2.png)
+![Script Naming Prompt](https://raw.githubusercontent.com/TheCobraBoy2/CSharp-Unity-Utilities/main/assets/ss2.png)
 
 #### 3. The generated script opens automatically  
-![Generated Script](./assets/ss3.png)
+![Generated Script](https://raw.githubusercontent.com/TheCobraBoy2/CSharp-Unity-Utilities/main/assets/ss3.png)
 
 ---
 
