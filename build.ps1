@@ -2,7 +2,7 @@ $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptPath
 
 $pack = Get-Content "./package.json" -Raw | ConvertFrom-Json
-$packVer = $pack.version
+$packVer = $pack.version + 1
 
 if (Test-Path "build") {
     Remove-Item "build" -Recurse -Force
@@ -32,7 +32,7 @@ vsce package --out build
 git push origin main --follow-tags
 
 Write-Host "Generating release notes..." -ForegroundColor Cyan
-$releaseNotes = npx auto-changelog --unreleased --package --commit-limit false --starting-version $packVer --stdout --ignore-commit-pattern '^docs: auto-update$'
+$releaseNotes = npx auto-changelog --package --commit-limit false --starting-version $packVer --stdout --ignore-commit-pattern '^docs: auto-update$'
 $releaseNotes | Out-File -FilePath "temp_release_notes.txt"
 
 Write-Host "Creating GitHub release..." -ForegroundColor Cyan
