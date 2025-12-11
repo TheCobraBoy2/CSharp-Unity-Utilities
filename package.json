@@ -1,7 +1,7 @@
 {
   "name": "csharp-unity-utilities",
   "displayName": "C# Unity Utilities",
-  "publisher": "Landon Snellgrove",
+  "publisher": "vorrikz",
   "version": "1.0.4",
   "engines": {
     "vscode": "^1.80.0"
