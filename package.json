@@ -131,8 +131,7 @@
     }
   },
   "scripts": {
-    "build": "pwsh ./build.ps1",
-    "vscode:prepublish": "npm run build"
+    "build": "pwsh ./build.ps1"
   },
   "license": "MIT",
   "author": "Landon Snellgrove (vorrikz)",
