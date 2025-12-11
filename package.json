@@ -1,10 +1,14 @@
 {
   "name": "csharp-unity-utilities",
   "displayName": "C# Unity Utilities",
-  "publisher": "vorrikz",
+  "publisher": "Landon Snellgrove",
   "version": "0.0.4",
   "engines": {
     "vscode": "^1.80.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheCobraBoy2/CSharp-Unity-Utilities"
   },
   "scripts": {
     "changelog": "auto-changelog -p",
