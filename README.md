@@ -48,18 +48,6 @@ This extension automatically:
 
 ---
 
-## 📦 Future Additions
-
-The extension is designed to be expandable. Additional utilities may include:
-
-- ScriptableObject templates  
-- EditorWindow / Custom Inspector templates  
-- Unity event script generators  
-- Common patterns (Singleton, Manager, Service Locator, etc.)  
-- Other Unity or project-specific file tools  
-
----
-
 ## 📝 Why This Exists
 
 Unity developers often repeat the same script creation tasks.  
